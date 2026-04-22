@@ -1,0 +1,20 @@
+CREATE DATABASE IF NOT EXISTS attendance_system_1;
+
+USE attendance_system_1;
+
+CREATE TABLE IF NOT EXISTS students (
+    student_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100),
+    phone VARCHAR(15),
+    department VARCHAR(50)
+);
+
+CREATE TABLE IF NOT EXISTS attendance (
+    attendance_id INT AUTO_INCREMENT PRIMARY KEY,
+    student_id INT,
+    date DATE,
+    time TIME,
+    status ENUM('Present', 'Absent'),
+    FOREIGN KEY (student_id) REFERENCES students(student_id)
+);
